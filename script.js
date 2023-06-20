@@ -1,41 +1,58 @@
-let computerSelection;
-let playerSelection
-
-const possibleComputerChoices = ["Rock", "Paper", "Scissors"];
-
 function getComputerChoice() {
-    
+    let computerNumber = ~~(Math.random() * 3);
+    switch (computerNumber) {
+        case 0:
+            return "rock";
+            break;
+        case 1:
+            return "paper";
+            break;
+        case 2:
+            return "scissors";
+            break;
+    }
 }
+let playerChoice = prompt("Rock, paper, or Scissors? Bruv?");
+let playerSelection = playerChoice.toLowerCase();
+let playerScore = 0;
+let computerScore = 0;
 
-let playerScore = 0
-let computerScore = 0
 
 function playRound(playerSelection, computerSelection) {
-    computerSelection = getComputerChoice();
-    function getComputerChoice() {
-        return possibleComputerChoices[~~(Math.random() * possibleComputerChoices.length)];
-    }
-    console.log(getComputerChoice());
-    playerSelection = getPlayerChoice().toLowerCase();
-    function getPlayerChoice() {
-        return prompt("Rock, paper, scissors? Bruv?");
-    }
-    console.log(playerSelection);
+    let result = "";
+    if (playerSelection === computerSelection) {
+        return "Tied, go again!"
+    } else if (
+        (playerSelection == "rock" && computerSelection == "scissors") ||
+        (playerSelection == "paper" && computerSelection == "rock") ||
+        (playerSelection == "scissors" && computerSelection == "paper")) {
 
-    if ((playerSelection === "rock" && computerSelection === "Scissors") ||
-    (playerSelection === "scissors" && computerSelection === "Paper") ||
-    (playerSelection === "paper" && computerSelection === "Rock")) {
-        return (++playerScore)
-    } else if ((playerSelection === "rock" && computerSelection === "Paper") ||
-    (playerSelection === "scissors" && computerSelection === "Rock")
-    (playerSelection === "paper" && computerSelection === "Scissors")) {
-        return (++computerScore)
-    } else if (playerSelection == computerSelection.toLowerCase()) {
-        return ("It's bloody tie ya wanker");
-    } else {
-        return "Oi what the frik? can't you shpell?"
+        playerScore += 1;
+        result += `You win! ${playerSelection} beats ${computerSelection}!`;
+        return result;
+    } else if (
+        (playerSelection == "rock" && computerSelection == "paper") ||
+        (playerSelection == "scissors" && computerSelection == "rock") ||
+        (playerSelection == "paper" && computerSelection == "scissors")) {
+            
+        computerScore += 1;
+        result += `You lose! ${computerSelection} beats ${playerSelection}`;
+        return result;
     }
 }
-function game()
+function game(playerScore, computerScore) {
+    for (let i = 0; i < 5; i++) {
+        playRound(playerSelection, computerSelection);
+    }
+    if (playerScore > computerScore) {
+        console.log("You have vanquished your enemy!");
+    } else if (computerScore > playerScore) {
+        console.log("The machine god has slain you!");
+    }
+    return;
+}
+
+let computerSelection = getComputerChoice();
+
 
 console.log(playRound(playerSelection, computerSelection));
