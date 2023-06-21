@@ -1,3 +1,10 @@
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playRound(target.id, computerSelection);
+    })
+});
+
 function getComputerChoice() {
     let computerNumber = ~~(Math.random() * 3);
     switch (computerNumber) {
@@ -12,8 +19,10 @@ function getComputerChoice() {
             break;
     }
 }
-let playerChoice = prompt("Rock, paper, or Scissors? Bruv?");
-let playerSelection = playerChoice.toLowerCase();
+
+
+
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -39,17 +48,6 @@ function playRound(playerSelection, computerSelection) {
         result += `You lose! ${computerSelection} beats ${playerSelection}`;
         return result;
     }
-}
-function game(playerScore, computerScore) {
-    for (let i = 0; i < 5; i++) {
-        playRound(playerSelection, computerSelection);
-    }
-    if (playerScore > computerScore) {
-        console.log("You have vanquished your enemy!");
-    } else if (computerScore > playerScore) {
-        console.log("The machine god has slain you!");
-    }
-    return;
 }
 
 let computerSelection = getComputerChoice();

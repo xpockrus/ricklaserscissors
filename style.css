@@ -1,4 +1,26 @@
 * {
     background-color: rgb(37, 36, 36);
     color: white;
+    font-family:Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+h1, h2 {
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+    gap: 2em;
+}
+
+button {
+    background-color:black;
+    color: gold;
+    font-size: 150%;
+}
+
+.class {
+    display: flex;
+    justify-content: space-evenly;
 }
