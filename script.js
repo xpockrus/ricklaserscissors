@@ -1,8 +1,13 @@
 const buttons = document.querySelectorAll("button");
+let message = document.getElementById("message");
+const playerTally = document.getElementById("playerScore")
+
+message.textContent = "Tie Game, better get Lazering"
+
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
-        playRound(target.id, computerSelection);
-    })
+        playRound(button.id);
+    });
 });
 
 function getComputerChoice() {
@@ -21,36 +26,30 @@ function getComputerChoice() {
 }
 
 
-
-
 let playerScore = 0;
 let computerScore = 0;
 
 
-function playRound(playerSelection, computerSelection) {
-    let result = "";
-    if (playerSelection === computerSelection) {
-        return "Tied, go again!"
+function playRound(playerSelection) {
+    let computerSelection = getComputerChoice();
+    if (playerSelection == computerSelection) {
+        message.textContent = "Tied, go Again Bruv!";
     } else if (
         (playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "paper" && computerSelection == "rock") ||
         (playerSelection == "scissors" && computerSelection == "paper")) {
 
         playerScore += 1;
-        result += `You win! ${playerSelection} beats ${computerSelection}!`;
-        return result;
-    } else if (
-        (playerSelection == "rock" && computerSelection == "paper") ||
-        (playerSelection == "scissors" && computerSelection == "rock") ||
-        (playerSelection == "paper" && computerSelection == "scissors")) {
-            
+        message.textContent= `You win! ${playerSelection} beats ${computerSelection}!`;
+
+    } else {
         computerScore += 1;
-        result += `You lose! ${computerSelection} beats ${playerSelection}`;
-        return result;
+        message.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
     }
+    return;
 }
 
-let computerSelection = getComputerChoice();
+//let computerSelection = getComputerChoice();
 
 
-console.log(playRound(playerSelection, computerSelection));
+//console.log(playRound(playerSelection, computerSelection));
