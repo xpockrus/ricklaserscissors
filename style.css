@@ -11,7 +11,7 @@ h1, h2 {
     display: flex;
     justify-content: center;
     margin-top: 3em;
-    gap: 2em;
+    gap: 3em;
 }
 
 button {
@@ -26,8 +26,18 @@ button {
     margin-top: 4em;
 }
 
-#message {
-    border: 2px solid white;
+.score {
+    display: flex;
+    flex-direction: column;
     width: 400px;
+}
+
+#message {
+    width: 400px;
+    text-align: center;
+    padding-top: 1em;
+}
+
+div {
     text-align: center;
 }
